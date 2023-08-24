@@ -1,0 +1,3 @@
+- we did stop watch using systick timer and DIO ... 
+- we used two push button .. one of them to pause the stop watch if it is pressed and if it is pressed again it will resume.
+- the other one to start counter at the beginning of the system. 
