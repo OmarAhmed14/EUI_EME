@@ -30,6 +30,7 @@ void lcd_moveCursor(uint8_t x,uint8_t y);
 void lcd_printLong(long a);
 unsigned char* integer_to_string(int a);
 void Reset_Num_Operations (void);
+void Shift_array (uint8_t Shifted_Index , uint8_t Last_index , sint32_t* Num);
 
 
 uint32_t evaluateOneOperation(sint32_t a , sint32_t b , sint8_t op)
@@ -73,7 +74,7 @@ void Write_Operation_LCD (void)
 
 void calculate(void){
 
-    long result=0;
+    sint32_t result=0;
     sint32_t score[MAX_INDEX]={0};
 
     /*****ORGANIZING THE ARRAYS AND COUNTING THE SCORES*****/
@@ -117,24 +118,37 @@ void calculate(void){
         /*Store the result in the place of the first number.*/
         Num[myIndex]=evaluateOneOperation(Num[myIndex] ,Num[myIndex +1] , operation[myIndex]);
         /*Clear the place of the second number and the used operation.*/
-        Num[myIndex+1]=-1;
+        //Num[myIndex+1]=-1;
         operation[myIndex]=-1;
         /*Sort the arrays such that the unwanted variables end up at the end of the array*/
-        sortNegatives(Num,index);
+        //sortNegatives(Num,index);
+        if (score[0] != 0)
+            Shift_array(myIndex+1 , index , Num);
+        else
+        {
+            // do Nothing
+        }
+
         sortNegativesChar(operation,index-1);
         myIndex=0;
 
-    }while(Num[1]!=-1);
+    }while(operation[0]!=-1);
     lcd_cmd(0x01);//clear the screen
     lcd_moveCursor(0,0); //Move Cursor to top left
     lcd_string("Result=");
     lcd_moveCursor(0,1); //Move Cursor to bottom left
     result=Num[0];
     /*PRINT THE RESULT AND RETURN ITS VALUE TO BE SAVED*/
-    lcd_printLong(result);
-    index=0; //Reset the index to overwrite the values in the next operation
+    if (0 == result){
+        lcd_data ('0');
+    }
+    else{
+        lcd_printLong(result);
+    }
     
     Reset_Num_Operations(); // Reset Numbers Array and Operation Array
+
+    index=0; //Reset the index to overwrite the values in the next operation
    
 }
 
@@ -165,19 +179,45 @@ void sortNegativesChar(sint8_t arr[], int n) {
     }
 }
 unsigned char* integer_to_string(int a){
+    uint8_t parameter=0;
     static unsigned char myString[20];
-    uint8_t i=0,temp=0;
+    uint8_t i=0,j=0,temp=0;
+    unsigned char length;
+    uint8_t indexx =0;
+
+    if (a<0)
+    {
+         myString[i] = '-';
+         i++;
+         j++;
+         a*=-1;
+    }
+    else
+    {
+        // Do Nothing
+    }
+
     while(a!=0){
         myString[i]=(a%10)+48;
         a/=10;
         ++i;
     }
-    unsigned char length=strlen(myString);//get the length of the string
+    myString[i]=0;
+
+    length=strlen(myString); //get the length of the string
+
     /*Reverse my string to the correct order*/
-    for(int j=0;j<(length/2);j++){
+    if (j){
+        parameter=((length-1)/2)+1;
+    }
+    else
+        parameter=(length/2);
+
+    for(;j<parameter;j++){
         temp=myString[j];
-        myString[j]=myString[length-j-1];
-        myString[length-j-1]=temp;
+        indexx=(myString[0]=='-'?length-j:length-j-1);
+        myString[j]=myString[indexx];
+        myString[indexx]=temp;
     }
     return myString;
 }
@@ -191,11 +231,24 @@ void lcd_printLong(long a){
 
 void Reset_Num_Operations (void)
 {
+    int i;
+    for (i=0; i<=index;i++)
+    {
+        Num[i]=0;
+        if (i<=index-1)
+            operation[i]=0;
+    }
+}
+
+void Shift_array (uint8_t Shifted_Index , uint8_t Last_index , sint32_t* Num)
+{
+    sint32_t temp;
     uint8_t i;
-	for (i=0; i<=index;i++)
-	{
-		Num[i]=0;
-		if (i<=index-1)
-			operation[i]=0;
-	}
+
+    for (i=Shifted_Index; i<Last_index; i++)
+    {
+        temp = Num[i];
+        Num[i]=Num [i+1];
+        Num[i+1]=temp;
+    }
 }

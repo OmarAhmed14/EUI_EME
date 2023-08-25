@@ -1,10 +1,10 @@
 Documentation for our project:
 ------------------------------
-1- our project is a simple calculator that takes any number of operations and operands.
+1- our project is a Complex calculator that takes any number of operations and operands.
 
 2- we use keyPad, LCD and tm4c123gh6pm microcontroller as hardware and Code Composer Studio as software to implement Code.
 
-3- for now, our calculator support only integer positive Numbers as results and calaulations and in the future we will add new features such as negative numbers and floating numbers.
+3- our calculator support only integer positive and negative Numbers as results and calaulations and in the future we will add new features such as floating numbers.
 
 
 
