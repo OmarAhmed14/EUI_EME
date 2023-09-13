@@ -1,0 +1,511 @@
+******************************************************************************
+                  TI ARM Linker PC v16.9.11                    
+******************************************************************************
+>> Linked Wed Sep 13 20:34:17 2023
+
+OUTPUT FILE NAME:   <Car_Project_v2.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 000027b9
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00002a1e  0003d5e2  R  X
+  SRAM                  20000000   00008000  00000275  00007d8b  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00002a20   00002a20    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00002762   00002762    r-x .text
+  000029d0    000029d0    00000050   00000050    r-- .cinit
+20000000    20000000    00000275   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000040   00000000    rw- .data
+  20000240    20000240    00000035   00000000    rw- .bss
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00002762     
+                  0000026c    00000c60     DIO.obj (.text)
+                  00000ecc    000003e0     lcd.obj (.text)
+                  000012ac    00000244     GPTM_Program.obj (.text)
+                  000014f0    00000240     main.obj (.text)
+                  00001730    000001f8     NVIC.obj (.text)
+                  00001928    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.obj (.text)
+                  00001ade    00000002                                   : i_div0.obj (.text)
+                  00001ae0    00000194     PWM.obj (.text)
+                  00001c74    0000017c     adc.obj (.text)
+                  00001df0    00000160     Schedular.obj (.text)
+                  00001f50    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  00002086    00000002                                   : mpu_init.obj (.text)
+                  00002088    00000108     Ultrasonic.obj (.text)
+                  00002190    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.obj (.text)
+                  0000228c    000000b0     Systick_program.obj (.text)
+                  0000233c    000000aa     dc_motor.obj (.text)
+                  000023e6    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00002482    00000002                                   : startup.obj (.text)
+                  00002484    0000008c     LDR.obj (.text)
+                  00002510    0000007c     delay.obj (.text)
+                  0000258c    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  00002606    00000002     --HOLE-- [fill = 0]
+                  00002608    00000070                                   : autoinit.obj (.text)
+                  00002678    0000006e                                   : fd_tos_t2.obj (.text)
+                  000026e6    00000068                                   : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  0000274e    00000002     --HOLE-- [fill = 0]
+                  00002750    00000068     internal_temp_sensor.obj (.text)
+                  000027b8    00000054     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  0000280c    00000054                                   : exit.obj (.text)
+                  00002860    0000004c                                   : cpy_tbl.obj (.text)
+                  000028ac    00000044                                   : fd_tou_t2.obj (.text)
+                  000028f0    00000040                                   : u_divt2.obj (.text)
+                  00002930    00000026     push_button.obj (.text)
+                  00002956    00000020     rtsv7M4_T_le_v4SPD16_eabi.lib : u_tofd_t2.obj (.text)
+                  00002976    00000002     --HOLE-- [fill = 0]
+                  00002978    00000018                                   : args_main.obj (.text)
+                  00002990    00000014                                   : _lock.obj (.text)
+                  000029a4    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  000029b2    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  000029be    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000029ca    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+
+.cinit     0    000029d0    00000050     
+                  000029d0    0000002a     (.cinit..data.load) [load image, compression = lzss]
+                  000029fa    00000002     --HOLE-- [fill = 0]
+                  000029fc    0000000c     (__TI_handler_table)
+                  00002a08    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00002a10    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000200     --HOLE--
+
+.data      0    20000200    00000040     UNINITIALIZED
+                  20000200    00000024     Schedular.obj (.data)
+                  20000224    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
+                  20000230    00000008                                   : _lock.obj (.data:$O1$$)
+                  20000238    00000004     Ultrasonic.obj (.data)
+                  2000023c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+
+.bss       0    20000240    00000035     UNINITIALIZED
+                  20000240    00000018     (.common:TASKS)
+                  20000258    00000004     (.common:Difference)
+                  2000025c    00000004     (.common:Distance)
+                  20000260    00000004     (.common:Fall)
+                  20000264    00000004     (.common:Rise)
+                  20000268    00000004     (.common:obstacleDistance)
+                  2000026c    00000002     (.common:READ_L)
+                  2000026e    00000002     (.common:READ_R)
+                  20000270    00000002     (.common:readingDifference)
+                  20000272    00000002     (.common:tempInternalSensor)
+                  20000274    00000001     (.common:carDirection)
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12      620       0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         12      620       0      
+                                                               
+    .\APP\
+       main.obj                       576     0         37     
+    +--+------------------------------+-------+---------+---------+
+       Total:                         576     0         37     
+                                                               
+    .\HAL\
+       lcd.obj                        992     0         0      
+       Ultrasonic.obj                 264     0         20     
+       dc_motor.obj                   170     0         0      
+       LDR.obj                        140     0         0      
+       internal_temp_sensor.obj       104     0         0      
+       push_button.obj                38      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         1708    0         20     
+                                                               
+    .\LIB\
+       delay.obj                      124     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         124     0         0      
+                                                               
+    .\MCAL\
+       DIO.obj                        3168    0         0      
+       GPTM_Program.obj               580     0         0      
+       NVIC.obj                       504     0         0      
+       PWM.obj                        404     0         0      
+       adc.obj                        380     0         0      
+       Systick_program.obj            176     0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         5212    0         0      
+                                                               
+    .\OS\
+       Schedular.obj                  352     0         36     
+    +--+------------------------------+-------+---------+---------+
+       Total:                         352     0         36     
+                                                               
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_16.9.11.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_add_t2.obj                  438     0         0      
+       fd_div_t2.obj                  310     0         0      
+       fd_mul_t2.obj                  252     0         0      
+       memcpy_t2.obj                  156     0         0      
+       memset_t2.obj                  122     0         0      
+       autoinit.obj                   112     0         0      
+       fd_tos_t2.obj                  110     0         0      
+       copy_decompress_lzss.obj       104     0         0      
+       exit.obj                       84      0         12     
+       boot.obj                       84      0         0      
+       cpy_tbl.obj                    76      0         0      
+       fd_tou_t2.obj                  68      0         0      
+       u_divt2.obj                    64      0         0      
+       u_tofd_t2.obj                  32      0         0      
+       _lock.obj                      20      0         8      
+       args_main.obj                  24      0         0      
+       copy_decompress_none.obj       14      0         0      
+       copy_zero_init.obj             12      0         0      
+       pre_init.obj                   4       0         0      
+       stkdepth_vars.obj              0       0         4      
+       i_div0.obj                     2       0         0      
+       mpu_init.obj                   2       0         0      
+       startup.obj                    2       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         2092    0         24     
+                                                               
+       Stack:                         0       0         512    
+       Linker Generated:              0       78        0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   10076   698       629    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00002a10 records: 2, size/record: 8, table size: 16
+	.data: load addr=000029d0, load size=0000002a bytes, run addr=20000200, run size=00000040 bytes, compression=lzss
+	.bss: load addr=00002a08, load size=00000008 bytes, run addr=20000240, run size=00000035 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000029fc records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                           
+-------   ----                           
+00001d2b  ADC0_TempSensorAnalogReading   
+00001c75  ADC0_initLDR                   
+00001cf1  ADC0_initTempSensor            
+00001d85  ADC0_leftLDRAnalogReading      
+00001d53  ADC0_rightLDRAnalogReading     
+0000280d  C$$EXIT                        
+20000204  CountB                         
+20000203  CountG                         
+20000202  CountR                         
+00000e39  DIO_ADCPinInit                 
+000007ad  DIO_EnableInterrupt            
+00000645  DIO_PinDirection               
+00000517  DIO_ReadPin                    
+000003db  DIO_WritePin                   
+0000026d  DIO_init                       
+0000233d  DcMotor_init                   
+00002363  DcMotor_rotate                 
+20000258  Difference                     
+2000025c  Distance                       
+00001bfd  Duty_Cycle                     
+20000260  Fall                           
+000012ad  GPTM_Init                      
+000013a1  GPTM_delay_millisec            
+00001319  GPTM_delay_sec                 
+000020c9  Get_Distance                   
+00001175  LCD_clearScreen                
+00000fe3  LCD_displayCharacter           
+000010c7  LCD_displayString              
+00001155  LCD_displayStringRowColumn     
+00000ecd  LCD_init                       
+000010f7  LCD_moveCursor                 
+00000eff  LCD_sendCommand                
+000011e7  LCD_writeNumber                
+000024b5  LDR_Compare                    
+00002485  LDR_init                       
+000024a9  LDR_leftReading                
+0000249d  LDR_rightReading               
+00001819  NVIC_disableInterrupt          
+00001731  NVIC_enableInterrupt           
+20000208  OFF                            
+00001ae1  PWM_INIT                       
+20000238  Period                         
+20000200  Priority                       
+2000026c  READ_L                         
+2000026e  READ_R                         
+000029bf  ResetISR                       
+0000117f  Reverse                        
+20000264  Rise                           
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+00001ea5  Systick_Handler                
+0000228d  Systick_Init                   
+000022b3  Systick_SetBusyWait            
+20000240  TASKS                          
+0000142b  TIMER0A_Handler                
+2000020c  TIMER0_CTL                     
+20000214  TIMER0_ICR                     
+20000210  TIMER0_TAILR                   
+20000218  TIMER1_CTL                     
+20000220  TIMER1_ICR                     
+2000021c  TIMER1_TAILR                   
+000015f7  Task_LCD                       
+00001697  Task_LDR                       
+0000152d  Task_ultrasonic                
+0000209b  Triger                         
+00002089  Ultrasonic_INIT                
+0000142d  WTimer_0_Inputcapture_INIT     
+20000200  __STACK_END                    
+00000200  __STACK_SIZE                   
+20000200  __STACK_TOP                    
+00002a10  __TI_CINIT_Base                
+00002a20  __TI_CINIT_Limit               
+000029fc  __TI_Handler_Table_Base        
+00002a08  __TI_Handler_Table_Limit       
+00002609  __TI_auto_init                 
+20000224  __TI_cleanup_ptr               
+000026e7  __TI_decompress_lzss           
+000029a5  __TI_decompress_none           
+20000228  __TI_dtors_ptr                 
+2000022c  __TI_enable_exit_profile_output
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+00000000  __TI_static_base__             
+000029b3  __TI_zero_init                 
+00002679  __aeabi_d2f                    
+000028ad  __aeabi_d2uiz                  
+00001933  __aeabi_dadd                   
+00001f51  __aeabi_ddiv                   
+00002191  __aeabi_dmul                   
+00001929  __aeabi_dsub                   
+00001adf  __aeabi_idiv0                  
+0000258d  __aeabi_memclr                 
+0000258d  __aeabi_memclr4                
+0000258d  __aeabi_memclr8                
+000023e7  __aeabi_memcpy                 
+000023e7  __aeabi_memcpy4                
+000023e7  __aeabi_memcpy8                
+0000258f  __aeabi_memset                 
+0000258f  __aeabi_memset4                
+0000258f  __aeabi_memset8                
+00002957  __aeabi_ui2d                   
+000028f1  __aeabi_uidiv                  
+000028f1  __aeabi_uidivmod               
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+00002087  __mpu_init                     
+20000000  __stack                        
+00002979  _args_main                     
+000027b9  _c_int00                       
+00002511  _delay_ms                      
+00002553  _delay_us                      
+20000230  _lock                          
+0000299f  _nop                           
+00002997  _register_lock                 
+00002991  _register_unlock               
+00002483  _system_post_cinit             
+000029cb  _system_pre_init               
+20000234  _unlock                        
+00002811  abort                          
+ffffffff  binit                          
+20000274  carDirection                   
+00002861  copy_in                        
+00001dff  create_task                    
+00002819  exit                           
+20000207  flagB                          
+20000206  flagG                          
+20000205  flagR                          
+00000000  g_pfnVectors                   
+00002759  internalTempSensor_GetReading  
+00002751  internalTempSensor_init        
+000014f1  main                           
+2000023c  main_func_sp                   
+000023e7  memcpy                         
+00002595  memset                         
+20000268  obstacleDistance               
+20000209  off_flag                       
+00002931  pushButton_init                
+0000293f  pushButton_startIsPressed      
+0000294b  pushButton_stopIsPressed       
+20000270  readingDifference              
+00001df1  sheduler_init                  
+00002323  systick_disable                
+000022f5  systick_interput               
+00001e2b  tasks_scheduler                
+20000272  tempInternalSensor             
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                           
+-------   ----                           
+00000000  __TI_static_base__             
+00000000  g_pfnVectors                   
+00000200  __STACK_SIZE                   
+0000026d  DIO_init                       
+000003db  DIO_WritePin                   
+00000517  DIO_ReadPin                    
+00000645  DIO_PinDirection               
+000007ad  DIO_EnableInterrupt            
+00000e39  DIO_ADCPinInit                 
+00000ecd  LCD_init                       
+00000eff  LCD_sendCommand                
+00000fe3  LCD_displayCharacter           
+000010c7  LCD_displayString              
+000010f7  LCD_moveCursor                 
+00001155  LCD_displayStringRowColumn     
+00001175  LCD_clearScreen                
+0000117f  Reverse                        
+000011e7  LCD_writeNumber                
+000012ad  GPTM_Init                      
+00001319  GPTM_delay_sec                 
+000013a1  GPTM_delay_millisec            
+0000142b  TIMER0A_Handler                
+0000142d  WTimer_0_Inputcapture_INIT     
+000014f1  main                           
+0000152d  Task_ultrasonic                
+000015f7  Task_LCD                       
+00001697  Task_LDR                       
+00001731  NVIC_enableInterrupt           
+00001819  NVIC_disableInterrupt          
+00001929  __aeabi_dsub                   
+00001933  __aeabi_dadd                   
+00001adf  __aeabi_idiv0                  
+00001ae1  PWM_INIT                       
+00001bfd  Duty_Cycle                     
+00001c75  ADC0_initLDR                   
+00001cf1  ADC0_initTempSensor            
+00001d2b  ADC0_TempSensorAnalogReading   
+00001d53  ADC0_rightLDRAnalogReading     
+00001d85  ADC0_leftLDRAnalogReading      
+00001df1  sheduler_init                  
+00001dff  create_task                    
+00001e2b  tasks_scheduler                
+00001ea5  Systick_Handler                
+00001f51  __aeabi_ddiv                   
+00002087  __mpu_init                     
+00002089  Ultrasonic_INIT                
+0000209b  Triger                         
+000020c9  Get_Distance                   
+00002191  __aeabi_dmul                   
+0000228d  Systick_Init                   
+000022b3  Systick_SetBusyWait            
+000022f5  systick_interput               
+00002323  systick_disable                
+0000233d  DcMotor_init                   
+00002363  DcMotor_rotate                 
+000023e7  __aeabi_memcpy                 
+000023e7  __aeabi_memcpy4                
+000023e7  __aeabi_memcpy8                
+000023e7  memcpy                         
+00002483  _system_post_cinit             
+00002485  LDR_init                       
+0000249d  LDR_rightReading               
+000024a9  LDR_leftReading                
+000024b5  LDR_Compare                    
+00002511  _delay_ms                      
+00002553  _delay_us                      
+0000258d  __aeabi_memclr                 
+0000258d  __aeabi_memclr4                
+0000258d  __aeabi_memclr8                
+0000258f  __aeabi_memset                 
+0000258f  __aeabi_memset4                
+0000258f  __aeabi_memset8                
+00002595  memset                         
+00002609  __TI_auto_init                 
+00002679  __aeabi_d2f                    
+000026e7  __TI_decompress_lzss           
+00002751  internalTempSensor_init        
+00002759  internalTempSensor_GetReading  
+000027b9  _c_int00                       
+0000280d  C$$EXIT                        
+00002811  abort                          
+00002819  exit                           
+00002861  copy_in                        
+000028ad  __aeabi_d2uiz                  
+000028f1  __aeabi_uidiv                  
+000028f1  __aeabi_uidivmod               
+00002931  pushButton_init                
+0000293f  pushButton_startIsPressed      
+0000294b  pushButton_stopIsPressed       
+00002957  __aeabi_ui2d                   
+00002979  _args_main                     
+00002991  _register_unlock               
+00002997  _register_lock                 
+0000299f  _nop                           
+000029a5  __TI_decompress_none           
+000029b3  __TI_zero_init                 
+000029bf  ResetISR                       
+000029cb  _system_pre_init               
+000029fc  __TI_Handler_Table_Base        
+00002a08  __TI_Handler_Table_Limit       
+00002a10  __TI_CINIT_Base                
+00002a20  __TI_CINIT_Limit               
+20000000  __stack                        
+20000200  Priority                       
+20000200  __STACK_END                    
+20000200  __STACK_TOP                    
+20000202  CountR                         
+20000203  CountG                         
+20000204  CountB                         
+20000205  flagR                          
+20000206  flagG                          
+20000207  flagB                          
+20000208  OFF                            
+20000209  off_flag                       
+2000020c  TIMER0_CTL                     
+20000210  TIMER0_TAILR                   
+20000214  TIMER0_ICR                     
+20000218  TIMER1_CTL                     
+2000021c  TIMER1_TAILR                   
+20000220  TIMER1_ICR                     
+20000224  __TI_cleanup_ptr               
+20000228  __TI_dtors_ptr                 
+2000022c  __TI_enable_exit_profile_output
+20000230  _lock                          
+20000234  _unlock                        
+20000238  Period                         
+2000023c  main_func_sp                   
+20000240  TASKS                          
+20000258  Difference                     
+2000025c  Distance                       
+20000260  Fall                           
+20000264  Rise                           
+20000268  obstacleDistance               
+2000026c  READ_L                         
+2000026e  READ_R                         
+20000270  readingDifference              
+20000272  tempInternalSensor             
+20000274  carDirection                   
+ffffffff  __TI_pprof_out_hndl            
+ffffffff  __TI_prof_data_size            
+ffffffff  __TI_prof_data_start           
+ffffffff  __binit__                      
+ffffffff  __c_args__                     
+ffffffff  binit                          
+UNDEFED   SHT$$INIT_ARRAY$$Base          
+UNDEFED   SHT$$INIT_ARRAY$$Limit         
+
+[146 symbols]
